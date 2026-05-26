@@ -112,6 +112,14 @@ When testing an API endpoint:
 - Close the modal or press ESC to continue
 - Error messages are displayed with clear formatting
 
+## Screenshots
+
+### Homepage - Module List
+![Homepage Screenshot](screenshoot/screenshoot_1.png)
+
+### API Catalog - Endpoint Testing
+![API Catalog Screenshot](screenshoot/screenshoot_2.png)
+
 ## Security Notes
 
 - Token is cached locally for performance
