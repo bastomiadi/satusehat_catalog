@@ -121,69 +121,25 @@ $modules = [
         'description' => 'Patient management resources',
         'endpoints' => [
 
-            // 1. USE CASE: PEMBUATAN PASIEN UMUM (BERDASARKAN NIK PASIEN)
             [
-                'key' => 'create_patient_by_nik',
-                'label' => 'Create Patient (by NIK)',
+                'key' => 'create_patient_neonates',
+                'label' => 'Create Patient (Neonates/WNA Only)',
                 'method' => 'POST',
                 'path' => '/Patient',
-                'description' => 'Mendaftarkan data pasien baru ke dalam ekosistem SATUSEHAT menggunakan nomor identitas NIK Pasien resmi.',
+                'description' => 'Hanya digunakan untuk pendaftaran Bayi Baru Lahir (belum memiliki NIK) atau WNA.',
                 'params' => [],
                 'body' => [
                     'resourceType' => 'Patient',
                     'active' => true,
-                    'identifier' => [
-                        [
-                            'use' => 'official',
-                            'system' => 'https://fhir.kemkes.go.id/id/nik', // System URL khusus NIK Pasien
-                            'value' => '317301XXXXXXXXXX' // Ganti dengan 16 digit NIK Pasien asli
-                        ]
-                    ],
                     'name' => [
                         [
                             'use' => 'official',
-                            'text' => 'Nama Lengkap Pasien Sesuai KTP'
-                        ]
-                    ],
-                    'gender' => 'male', // Pilihan: male / female / other / unknown
-                    'birthDate' => '1995-08-17', // Format: YYYY-MM-DD
-                    'telecom' => [
-                        [
-                            'system' => 'phone',
-                            'value' => '0812XXXXXXXX',
-                            'use' => 'mobile'
-                        ]
-                    ]
-                ]
-            ],
-
-            // 2. USE CASE: PEMBUATAN PASIEN BAYI / NEONATUS (BERDASARKAN NIK IBU)
-            [
-                'key' => 'create_patient_by_nik_ibu',
-                'label' => 'Create Patient (Neonates by NIK Ibu)',
-                'method' => 'POST',
-                'path' => '/Patient',
-                'description' => 'Digunakan khusus pendaftaran Bayi Baru Lahir (Neonatus) yang belum memiliki NIK sendiri, diikat melalui NIK Ibu Kandung.',
-                'params' => [],
-                'body' => [
-                    'resourceType' => 'Patient',
-                    'active' => true,
-                    'identifier' => [
-                        [
-                            'use' => 'official',
-                            'system' => 'https://fhir.kemkes.go.id/id/nik-ibu', // System URL khusus untuk melacak NIK Ibu Kandung bayi
-                            'value' => '317301XXXXXXXXXX' // Ganti dengan 16 digit NIK Ibu Kandung
-                        ]
-                    ],
-                    'name' => [
-                        [
-                            'use' => 'official',
-                            'text' => 'Bayi Ny. Nama Ibu' // Standar penamaan sementara SIMRS/Pusdatin
+                            'text' => 'Bayi Ny. S'
                         ]
                     ],
                     'gender' => 'female',
-                    'birthDate' => date('Y-m-d'), // Otomatis tanggal hari ini saat di-hit
-                    'multipleBirthBoolean' => false, // Set true jika lahir kembar
+                    'birthDate' => date('Y-m-d'),
+                    'multipleBirthBoolean' => true,
                     'extension' => [
                         [
                             'url' => 'https://fhir.kemkes.go.id/StructureDefinition/patient-birthPlace',
@@ -192,34 +148,6 @@ $modules = [
                                 'country' => 'ID'
                             ]
                         ]
-                    ]
-                ]
-            ],
-
-            [
-                'key' => 'patch_patient',
-                'label' => 'Patch Patient',
-                'method' => 'PATCH',
-                'path' => '/Patient/{id}',
-                'description' => 'Memperbarui data pasien secara parsial (sebagian) menggunakan format JSON Patch (misal: membetulkan penulisan nama pasien atau menonaktifkan status aktif pasien).',
-                'params' => [
-                    [
-                        'name' => 'id',
-                        'type' => 'text',
-                        'placeholder' => 'Patient ID (Format: ID Pasien SATUSEHAT)',
-                        'default' => ''
-                    ]
-                ],
-                'body' => [
-                    [
-                        'op' => 'replace',       // Operasi yang didukung SATUSEHAT: replace
-                        'path' => '/name/0/text', // Target elemen nama lengkap pasien dalam struktur array FHIR
-                        'value' => 'Nama Pasien Setelah Diperbaiki' // Nilai koreksi nama yang baru
-                    ],
-                    [
-                        'op' => 'replace',
-                        'path' => '/active',     // Target elemen status keaktifan data pasien
-                        'value' => true          // Nilai boolean: true / false
                     ]
                 ]
             ],
@@ -500,121 +428,34 @@ $modules = [
                     ]
                 ]
             ],
-
             [
-                'key' => 'update_encounter',
-                'label' => 'Update Encounter',
+                'key' => 'update_encounter_status',
+                'label' => 'Update Encounter (PUT/PATCH)',
                 'method' => 'PUT',
                 'path' => '/Encounter/{id}',
-                'description' => 'Memperbarui data kunjungan/pemeriksaan pasien (Encounter) secara keseluruhan berdasarkan ID Encounter (misal: mengubah status kunjungan menjadi selesai atau memperbarui waktu keluar pasien).',
+                'description' => 'Mengubah status kunjungan menjadi in-progress atau finished.',
                 'params' => [
-                    [
-                        'name' => 'id',
-                        'type' => 'text',
-                        'placeholder' => 'Encounter ID (Format: UUID)',
-                        'default' => ''
-                    ]
+                    ['name' => 'id', 'type' => 'text', 'placeholder' => 'ID Encounter SATUSEHAT', 'default' => '']
                 ],
                 'body' => [
                     'resourceType' => 'Encounter',
-                    'id' => '{id}', // WAJIB ADA di dalam body PUT dan nilainya harus sama dengan {id} di URL
-                    'status' => 'finished', // Contoh perubahan status: planned | arrived | in-progress | finished | cancelled
+                    'status' => 'finished',
                     'class' => [
                         'system' => 'http://terminology.hl7.org/CodeSystem/v3-ActCode',
-                        'code' => 'AMB', // AMB = Ambulatory / Rawat Jalan
+                        'code' => 'AMB',
                         'display' => 'ambulatory'
                     ],
                     'subject' => [
-                        'reference' => 'Patient/100000000001', // ID Pasien SATUSEHAT
-                        'display' => 'Nama Pasien'
-                    ],
-                    'participant' => [
-                        [
-                            'type' => [
-                                [
-                                    'coding' => [
-                                        [
-                                            'system' => 'http://terminology.hl7.org/CodeSystem/v3-ParticipationType',
-                                            'code' => 'PPRF',
-                                            'display' => 'primary performer'
-                                        ]
-                                    ]
-                                  ]
-                            ],
-                            'individual' => [
-                                'reference' => 'Practitioner/{id_practitioner}', // ID Dokter/Nakes SATUSEHAT
-                                'display' => 'Nama Dokter'
-                            ]
-                        ]
+                        'reference' => 'Patient/{patient_id}'
                     ],
                     'period' => [
-                        'start' => '2026-05-27T08:00:00+07:00', // Waktu masuk / mulai pemeriksaan
-                        'end' => '2026-05-27T08:30:00+07:00'   // Waktu selesai kunjungan (Wajib diisi jika status 'finished')
-                    ],
-                    'location' => [
-                        [
-                            'location' => [
-                                'reference' => 'Location/{id_location}', // ID Ruangan/Poli SATUSEHAT
-                                'display' => 'Ruang Poli Umum Gedung A'
-                            ]
-                        ]
+                        'start' => '2026-05-26T09:00:00+07:00',
+                        'end' => '2026-05-26T09:30:00+07:00'
                     ],
                     'serviceProvider' => [
-                        'reference' => 'Organization/{org_id}' // ID Organisasi Utama Fasyankes Anda
+                        'reference' => 'Organization/{org_id}'
                     ]
                 ]
-            ],
-
-            // [
-            //     'key' => 'update_encounter_status',
-            //     'label' => 'Update Encounter (PUT/PATCH)',
-            //     'method' => 'PUT',
-            //     'path' => '/Encounter/{id}',
-            //     'description' => 'Mengubah status kunjungan menjadi in-progress atau finished.',
-            //     'params' => [
-            //         ['name' => 'id', 'type' => 'text', 'placeholder' => 'ID Encounter SATUSEHAT', 'default' => '']
-            //     ],
-            //     'body' => [
-            //         'resourceType' => 'Encounter',
-            //         'status' => 'finished',
-            //         'class' => [
-            //             'system' => 'http://terminology.hl7.org/CodeSystem/v3-ActCode',
-            //             'code' => 'AMB',
-            //             'display' => 'ambulatory'
-            //         ],
-            //         'subject' => [
-            //             'reference' => 'Patient/{patient_id}'
-            //         ],
-            //         'period' => [
-            //             'start' => '2026-05-26T09:00:00+07:00',
-            //             'end' => '2026-05-26T09:30:00+07:00'
-            //         ],
-            //         'serviceProvider' => [
-            //             'reference' => 'Organization/{org_id}'
-            //         ]
-            //     ]
-            // ],
-            [
-                'key' => 'patch_encounter',
-                'label' => 'Patch Encounter',
-                'method' => 'PATCH',
-                'path' => '/Encounter/{id}',
-                'description' => 'Memperbarui status atau elemen kunjungan pasien secara parsial/sebagian menggunakan format JSON Patch (sangat berguna untuk mengubah status antrean kunjungan secara cepat).',
-                'params' => [
-                    [
-                        'name' => 'id',
-                        'type' => 'text',
-                        'placeholder' => 'Encounter ID (Format: UUID)',
-                        'default' => ''
-                    ]
-                ],
-                'body' => [
-                    [
-                        'op' => 'replace',       // Operasi yang didukung SATUSEHAT: replace
-                        'path' => '/status',     // Target elemen status kunjungan
-                        'value' => 'in-progress' // Pilihan nilai: planned | arrived | in-progress | finished | cancelled
-                    ]
-                ],
             ],
             [
                 'key' => 'get_encounter',
@@ -5999,7 +5840,7 @@ $currentModule = $modules[$module] ?? $modules['patient'];
                         </div>
                         
                         <div class="p-6">
-                            <?php if ($endpoint['method'] === 'POST' || $endpoint['method'] === 'PUT' || $endpoint['method'] === 'PATCH'): ?>
+                            <?php if ($endpoint['method'] === 'POST' || $endpoint['method'] === 'PUT'): ?>
                             <form method="POST" class="api-test-form space-y-4">
                                 <input type="hidden" name="env" value="<?= $currentEnv ?>">
                                 <input type="hidden" name="method" value="<?= $endpoint['method'] ?>">
