@@ -1,0 +1,162 @@
+{
+  "info": {
+    "_postman_id": "774d767a-100f-4a57-b414-150489ec877a",
+    "name": "Additional: Set-up DICOM Router",
+    "description": "**Single Source of Truth** DICOM Router SATUSEHAT\n\n**Materi ini bersifat TERBATAS**. **DILARANG** menggunakan, menduplikasi, mempublikasi, dan/atau mendistribusikan dalam bentuk apapun, sebagian/keseluruhan informasi di dalam dokumen ini, secara elektronik maupun mekanik tanpa izin tertulis dari **Pusat Data dan Teknologi Informasi - Digital Transformation Office (DTO) Kementrian Kesehatan Republik Indonesia.**\n\n| **Folder History** | **Editor** | **Date** |\n| --- | --- | --- |\n| First Upload | [jaisyullah.islam@dto.kemkes.go.id](https://mailto:jaisyullah.islam@dto.kemkes.go.id) | 17-04-2024 |\n| Add API GET Dicom Router Installer | [jaisyullah.islam@dto.kemkes.go.id](https://mailto:jaisyullah.islam@dto.kemkes.go.id) | 19-06-2024 |",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "2886585"
+  },
+  "item": [
+    {
+      "name": "O-Auth2",
+      "item": [
+        {
+          "name": "Generate Token",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var data = pm.response.json();",
+                  "pm.environment.set(\"token\", data.access_token);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "client_id",
+                  "value": "{{client_id}}",
+                  "type": "text"
+                },
+                {
+                  "key": "client_secret",
+                  "value": "{{client_secret}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{auth_url}}/accesstoken?grant_type=client_credentials",
+              "host": [
+                "{{auth_url}}"
+              ],
+              "path": [
+                "accesstoken"
+              ],
+              "query": [
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "DICOM Router (Docker)",
+      "item": [
+        {
+          "name": "GET docker-compose.zip",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api-satusehat.kemkes.go.id/dicom-router",
+              "protocol": "https",
+              "host": [
+                "api-satusehat",
+                "kemkes",
+                "go",
+                "id"
+              ],
+              "path": [
+                "dicom-router"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Panduan instalasi  \n\n- Setup terlebih dahulu Docker Core / Docker Desktop pada PC yg disediakan untuk setup DICOM Router disesuaikan dengan Sistem Operasi yang digunakan\n    \n- Simpan file docker-compose.yml yg telah di GET pada folder Dicom Router di PC Faskes\n    \n- Masukkan / sesuaikan **ID ORG_ID, CLIENT, dan SECRET** SATUSEHAT pada file tersebut\n    \n- Run terminal untuk menjalankan perintah :\n    \n\n1. **Untuk Menghapus Versi Sebelumnya**\n    \n    1. docker compose down -v\n        \n    2. docker system prune -af\n        \n2. **Untuk Pertama Kali**\n    \n    1. docker compose up -d \n        \n3. **Untuk Update Perubahan Terbaru**\n    \n    1. docker compose pull \n        \n    2. docker compose up -d"
+    },
+    {
+      "name": "DICOM Router (Installer Binary)",
+      "item": [
+        {
+          "name": "GET dicom-router.zip",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api-satusehat.kemkes.go.id/dicom-router-installer",
+              "protocol": "https",
+              "host": [
+                "api-satusehat",
+                "kemkes",
+                "go",
+                "id"
+              ],
+              "path": [
+                "dicom-router-installer"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "**Panduan Instalasi**\n\nInstaller Binary dapat digunakan sebagai alternatif jika fasyankes tidak dapat menggunakan Docker.\n\n**Prasyarat Instalasi**\n\n1. PC Menggunakan OS Windows, Linux & Ubuntu\n    \n2. PC Terkoneksi ke jaringan internet faskes dan mendapatkan IP statis dari router\n    \n\nPERINGATAN\n\nFile **dicom-router.exe**\n\n1. Download file docker-compose.yml melalui API \\[GET\\] [<u>https://api-satusehat.kemkes.go.id/dicom-router-installer</u>](https://api-satusehat.kemkes.go.id/dicom-router) (harus menggunakan Authorization Bearer Token SatuSehat).\n    \n2. Save as response api rename menjadi file **dicom-router.exe**\n    \n3. Materi ini bersifat **TERBATAS**. **DILARANG** menggunakan, menduplikasi, mempublikasi, dan/atau mendistribusikan dalam bentuk apapun, sebagian/keseluruhan informasi di dalam dokumen ini, secara elektronik maupun mekanik tanpa izin tertulis dari **Pusat Data dan Teknologi Informasi - Digital Transformation Office (DTO) Kementrian Kesehatan Republik Indonesia**.\n    \n\n**Install Dicom Router**\n\n1. Download binary Installer Dicom Router menggunakan **API GET DICOM Router Installer**\n    \n2. Ekstrak _file_ dicom-router.zip.\n    \n3. Jalankan _file installer_ (**dicom-router.exe**) yang telah di-_download_.\n    \n4. Gunakan sandi _installer_ yaitu: **dtokemkes**.\n    \n5. Ikuti tahapan instalasi hingga selesai.\n    \n6. Sesuaikan org_id, client_key, secret_key dan url pada file router.conf di C://Program Files (x86)/DICOM Router. (Catatan: client_key adalah Client ID dan secret_key adalah Client Secret)\n    \n7. Jalankan DICOM Router yg sudah diinstall (atau gunakan shortcut Desktop)."
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}

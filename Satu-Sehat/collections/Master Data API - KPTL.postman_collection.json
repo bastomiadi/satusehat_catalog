@@ -1,0 +1,339 @@
+{
+  "info": {
+    "_postman_id": "aa1dcad3-8a16-4b4d-bcbc-9fecbce4dfcf",
+    "name": "Master Data API - KPTL",
+    "description": "| Tanggal | Riwayat Perubahan | **Penanggung Jawab** |\n| --- | --- | --- |\n| 24 November 2025 | Versi Pertama | Vendera Hadi  <br>Jaisyullah Rafiul Islam |",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "2886585"
+  },
+  "item": [
+    {
+      "name": "Generate Token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var data = pm.response.json();",
+              "pm.environment.set(\"token\",data.access_token);",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "client_id",
+              "value": "{{client_id}}",
+              "type": "text"
+            },
+            {
+              "key": "client_secret",
+              "value": "{{client_secret}}",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{auth_url}}/accesstoken?grant_type=client_credentials",
+          "host": [
+            "{{auth_url}}"
+          ],
+          "path": [
+            "accesstoken"
+          ],
+          "query": [
+            {
+              "key": "grant_type",
+              "value": "client_credentials"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Code",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Encryption-Disabled",
+            "value": "true",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"method\": \"get_all_code\",\n    \"query_string\": \"12027\",\n    \"offset\": 0,\n    \"limit\": 5\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/code",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "code"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Base Code",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Encryption-Disabled",
+            "value": "true",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"method\": \"get_all_base_code\",\n    \"query_string\": \"bro\",\n    \"offset\": 0,\n    \"limit\": 5\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/base_code",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "base_code"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Base Code Combination",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Encryption-Disabled",
+            "value": "true",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"method\": \"get_modifiers\",\n    \"query_string\": \"13601\",\n    \"max_iteration\": 2\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/base_code_combination",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "base_code_combination"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Modifier",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Encryption-Disabled",
+            "value": "true",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"method\": \"get_modifier\",\n    \"query_string\": \"\",\n    \"offset\": 0,\n    \"limit\": 50\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/modifier",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "modifier"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Modifier Value",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Encryption-Disabled",
+            "value": "true",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"method\": \"get_modifier_value\",\n    \"query_string\": \"M006\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/modifier_value",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "modifier_value"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Base Code by Modifier",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Encryption-Disabled",
+            "value": "true",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"method\": \"get_base_code\",\n    \"query_string\": \"M110\",\n    \"offset\": 0,\n    \"limit\": 10\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/base_code_by_modifier",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "base_code_by_modifier"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
