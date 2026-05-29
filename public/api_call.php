@@ -114,6 +114,10 @@ function getAccessToken($auth_url, $client_id, $client_secret, $tokenCacheFile =
 
 // Make API call
 function makeApiCall($base_url, $token, $method, $path, $org_id, $body = null) {
+    // Add /fhir-r4/v1/ prefix if not already present
+    // if (strpos($path, '/fhir-r4/v1/') !== 0) {
+    //     $path = '/fhir-r4/v1/' . ltrim($path, '/');
+    // }
     // Ensure no double slashes
     $url = rtrim($base_url, '/') . '/' . ltrim($path, '/');
     
@@ -143,7 +147,8 @@ function makeApiCall($base_url, $token, $method, $path, $org_id, $body = null) {
     $context = stream_context_create($options);
     $response = @file_get_contents($url, false, $context);
     
-    return $response;
+    // Return both response and the final path used
+    return ['response' => $response, 'path' => $path];
 }
 
 // Handle request - support both JSON and form data
@@ -182,7 +187,9 @@ if (isset($_GET['debug']) && $_GET['debug'] === '1') {
 }
 
 // Make API call
-$response = makeApiCall($base_url, $token, $method, $path, $org_id, $body);
+$apiResult = makeApiCall($base_url, $token, $method, $path, $org_id, $body);
+$response = $apiResult['response'];
+$finalPath = $apiResult['path'];
 $result = json_decode($response, true);
 
 // Debug: Log API response
@@ -196,7 +203,7 @@ if ($isApiRequest) {
     
     $output = [
         'method' => $method,
-        'path' => rtrim($base_url, '/') . '/' . ltrim($path, '/'),
+        'path' => rtrim($base_url, '/') . '/' . ltrim($finalPath, '/'),
         'success' => $token && !$tokenError,
         'token_error' => $tokenError,
         'data' => $result,

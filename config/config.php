@@ -34,7 +34,7 @@ return [
     'satusehat' => [
         'sandbox' => [
             'auth_url' => $_ENV['SATUSEHAT_AUTH_URL'] ?? 'https://api-satusehat-stg.dto.kemkes.go.id/oauth2/v1',
-            'base_url' => $_ENV['SATUSEHAT_BASE_URL'] ?? 'https://api-satusehat-stg.dto.kemkes.go.id/fhir-r4/v1',
+            'base_url' => $_ENV['SATUSEHAT_BASE_URL'] ?? 'https://api-satusehat-stg.dto.kemkes.go.id',
             'consent_url' => $_ENV['SATUSEHAT_CONSENT_URL'] ?? 'https://api-satusehat-stg.dto.kemkes.go.id/consent/v1',
             'organization_id' => $_ENV['SATUSEHAT_ORGANIZATION_ID'] ?? '',
             'client_id' => $_ENV['SATUSEHAT_CLIENT_ID'] ?? '',
@@ -42,7 +42,7 @@ return [
         ],
         'production' => [
             'auth_url' => $_ENV['SATUSEHAT_PROD_AUTH_URL'] ?? 'https://api-satusehat.kemkes.go.id/oauth2/v1',
-            'base_url' => $_ENV['SATUSEHAT_PROD_BASE_URL'] ?? 'https://api-satusehat.kemkes.go.id/fhir-r4/v1',
+            'base_url' => $_ENV['SATUSEHAT_PROD_BASE_URL'] ?? 'https://api-satusehat.kemkes.go.id',
             'consent_url' => $_ENV['SATUSEHAT_PROD_CONSENT_URL'] ?? 'https://api-satusehat.kemkes.go.id/consent/v1',
             'organization_id' => $_ENV['SATUSEHAT_PROD_ORGANIZATION_ID'] ?? '',
             'client_id' => $_ENV['SATUSEHAT_PROD_CLIENT_ID'] ?? '',
