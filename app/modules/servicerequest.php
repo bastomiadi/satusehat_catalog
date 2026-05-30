@@ -108,7 +108,7 @@
                     ],
                     'performer' => [
                         [
-                            'reference' => 'Organization/10000004', // Fasyankes/Laboratorium penanggung jawab pelaksana tindakan
+                            'reference' => 'Organization/{organization_id}', // Fasyankes/Laboratorium penanggung jawab pelaksana tindakan
                             'display' => 'Laboratorium Utama RS'
                         ]
                     ],
@@ -164,7 +164,7 @@
                     'id' => '{id}', // WAJIB ada di dalam body PUT dan nilainya harus sama dengan {id} di URL
                     'identifier' => [
                         [
-                            'system' => 'http://sys-ids.kemkes.go.id/servicerequest/10000004',
+                            'system' => 'http://sys-ids.kemkes.go.id/servicerequest/{servicerequest_id}',
                             'value' => 'LAB-20260529-001'
                         ]
                     ],
@@ -205,7 +205,7 @@
                     ],
                     'performer' => [
                         [
-                            'reference' => 'Organization/10000004',
+                            'reference' => 'Organization/{organization_id}',
                             'display' => 'Laboratorium Utama RS'
                         ]
                     ],

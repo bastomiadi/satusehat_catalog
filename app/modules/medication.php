@@ -211,7 +211,7 @@
                     ],
                     'identifier' => [
                         [
-                            'system' => 'http://sys-ids.kemkes.go.id/medication/10000004',
+                            'system' => 'http://sys-ids.kemkes.go.id/medication/{medication_id}',
                             'value' => 'OBAT-AMOX-500'
                         ]
                     ],

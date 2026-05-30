@@ -80,12 +80,12 @@
                     ],
                     'request' => [
                         [
-                            'reference' => 'ServiceRequest/6f4e3c2a-9617-4dfc-bccc-98ea002cdfa9' // Merujuk ke ID ServiceRequest (Order Permintaan Lab)
+                            'reference' => 'ServiceRequest/{servicerequest_id}' // Merujuk ke ID ServiceRequest (Order Permintaan Lab)
                         ]
                     ],
                     'collection' => [
                         'collector' => [
-                            'reference' => 'Practitioner/N10000001', // ID Tenaga Kesehatan / Analis yang mengambil sampel
+                            'reference' => 'Practitioner/{practitioner_id}', // ID Tenaga Kesehatan / Analis yang mengambil sampel
                             'display' => 'Nama Analis Laboratorium'
                         ],
                         'collectedDateTime' => '2026-05-29T10:00:00+07:00', // Waktu pengambilan sampel dilakukan
@@ -179,12 +179,12 @@
                     ],
                     'request' => [
                         [
-                            'reference' => 'ServiceRequest/6f4e3c2a-9617-4dfc-bccc-98ea002cdfa9'
+                            'reference' => 'ServiceRequest/{servicerequest_id}'
                         ]
                     ],
                     'collection' => [
                         'collector' => [
-                            'reference' => 'Practitioner/N10000001',
+                            'reference' => 'Practitioner/{practitioner_id}',
                             'display' => 'Nama Analis Laboratorium'
                         ],
                         'collectedDateTime' => '2026-05-29T10:00:00+07:00',
