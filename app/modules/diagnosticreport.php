@@ -123,19 +123,19 @@
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
-                        'reference' => 'Encounter/4f735a03-128b-464d-9617-e98be002cdfa' // Mengikat ID Encounter kunjungan terkait
+                        'reference' => 'Encounter/{encounter_id}' // Mengikat ID Encounter kunjungan terkait
                     ],
                     'effectiveDateTime' => '2026-05-29T11:00:00+07:00', // Waktu pengambilan sampel / pelaksanaan tes
                     'issued' => '2026-05-29T13:00:00+07:00', // Waktu laporan resmi ini diterbitkan oleh dokter/analis
                     'performer' => [
                         [
-                            'reference' => 'Practitioner/N10000001', // ID Dokter/Nakes pemeriksa laboratorium
+                            'reference' => 'Practitioner/{practitioner_id}', // ID Dokter/Nakes pemeriksa laboratorium
                             'display' => 'Nama Dokter Spesialis Patologi Klinik'
                         ]
                     ],
                     'result' => [
                         [
-                            'reference' => 'Observation/7d36a3e7-3807-47b8-892c-5b20490df1fa', // Referensi hasil per-item tes dari resource Observation
+                            'reference' => 'Observation/{observation_id}', // Referensi hasil per-item tes dari resource Observation
                             'display' => 'Hemoglobin'
                         ]
                     ],
@@ -196,23 +196,23 @@
                         ]
                     ],
                     'subject' => [
-                        'reference' => 'Patient/100000000001',
+                        'reference' => 'Patient/{patient_id}',
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
-                        'reference' => 'Encounter/4f735a03-128b-464d-9617-e98be002cdfa'
+                        'reference' => 'Encounter/{encounter_id}'
                     ],
                     'effectiveDateTime' => '2026-05-29T11:00:00+07:00',
                     'issued' => '2026-05-29T13:30:00+07:00', // Jam rilis revisi laporan
                     'performer' => [
                         [
-                            'reference' => 'Practitioner/N10000001',
+                            'reference' => 'Practitioner/{practitioner_id}',
                             'display' => 'Nama Dokter Spesialis Patologi Klinik'
                         ]
                     ],
                     'result' => [
                         [
-                            'reference' => 'Observation/7d36a3e7-3807-47b8-892c-5b20490df1fa',
+                            'reference' => 'Observation/{observation_id}',
                             'display' => 'Hemoglobin'
                         ]
                     ],

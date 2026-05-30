@@ -68,12 +68,12 @@
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
-                        'reference' => 'Encounter/bc5edf78-ea8d-4827-97b3-3c73a810fa29' // Mengikat ID Encounter kunjungan pasien
+                        'reference' => 'Encounter/{encounter_id}' // Mengikat ID Encounter kunjungan pasien
                     ],
                     'started' => '2026-05-29T17:00:00+07:00', // Waktu dimulainya pemeriksaan pencitraan
                     'author' => [
                         [
-                            'reference' => 'Practitioner/N10000001', // ID Dokter Pengirim / Radiolog
+                            'reference' => 'Practitioner/{practitioner_id}', // ID Dokter Pengirim / Radiolog
                             'display' => 'Nama Dokter Spesialis Radiologi'
                         ]
                     ],
@@ -142,23 +142,23 @@
                     'id' => '{id}', // WAJIB ada di dalam body PUT dan nilainya harus sama dengan {id} di URL
                     'status' => 'available',
                     'subject' => [
-                        'reference' => 'Patient/100000000001',
+                        'reference' => 'Patient/{patient_id}',
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
-                        'reference' => 'Encounter/bc5edf78-ea8d-4827-97b3-3c73a810fa29'
+                        'reference' => 'Encounter/{encounter_id}'
                     ],
                     'started' => '2026-05-29T17:00:00+07:00',
                     'author' => [
                         [
-                            'reference' => 'Practitioner/N10000001',
+                            'reference' => 'Practitioner/{practitioner_id}',
                             'display' => 'Nama Dokter Spesialis Radiologi'
                         ]
                     ],
                     'identifier' => [
                         [
                             'use' => 'official',
-                            'system' => 'http://sys-ids.kemkes.go.id/acsn/100000000001',
+                            'system' => 'http://sys-ids.kemkes.go.id/acsn/{patient_id}',
                             'value' => 'ACC-2026-0001'
                         ]
                     ],

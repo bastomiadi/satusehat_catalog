@@ -28,12 +28,12 @@
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
-                        'reference' => 'Encounter/4f735a03-128b-464d-9617-e98be002cdfa' // ID Encounter/Kunjungan terkait
+                        'reference' => 'Encounter/{encounter_id}' // ID Encounter/Kunjungan terkait
                     ],
                     'effectiveDateTime' => '2026-05-29T10:00:00+07:00', // Waktu pelaksanaan penilaian klinis dilakukan
                     'date' => '2026-05-29T10:15:00+07:00', // Waktu rekam data ini dibuat di SIMRS
                     'assessor' => [
-                        'reference' => 'Practitioner/N10000001' // ID Tenaga Kesehatan / Dokter Pemeriksa yang memberikan penilaian
+                        'reference' => 'Practitioner/{practitioner_id}' // ID Tenaga Kesehatan / Dokter Pemeriksa yang memberikan penilaian
                     ],
                     'investigation' => [
                         [
@@ -145,12 +145,12 @@
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
-                        'reference' => 'Encounter/4f735a03-128b-464d-9617-e98be002cdfa'
+                        'reference' => 'Encounter/{encounter_id}'
                     ],
                     'effectiveDateTime' => '2026-05-29T10:00:00+07:00',
                     'date' => '2026-05-29T10:15:00+07:00',
                     'assessor' => [
-                        'reference' => 'Practitioner/N10000001'
+                        'reference' => 'Practitioner/{practitioner_id}'
                     ],
                     'investigation' => [
                         [

@@ -207,7 +207,7 @@
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
-                        'reference' => 'Encounter/4f735a03-128b-464d-bf91-e6eacdf1c38f', // Mengikat ID Encounter kunjungan terkait
+                        'reference' => 'Encounter/{encounter_id}', // Mengikat ID Encounter kunjungan terkait
                         'display' => 'Kunjungan Rawat Jalan/Inap Terkait'
                     ],
                     'performedPeriod' => [
@@ -217,7 +217,7 @@
                     'performer' => [
                         [
                             'actor' => [
-                                'reference' => 'Practitioner/N10000001', // ID Dokter DPJP / Nakes yang melakukan tindakan
+                                'reference' => 'Practitioner/{practitioner_id}', // ID Dokter DPJP / Nakes yang melakukan tindakan
                                 'display' => 'Nama Dokter Pelaksana Tindakan'
                             ]
                         ]
@@ -285,7 +285,7 @@
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
-                        'reference' => 'Encounter/4f735a03-128b-464d-bf91-e6eacdf1c38f',
+                        'reference' => 'Encounter/{encounter_id}',
                         'display' => 'Kunjungan Rawat Jalan/Inap Terkait'
                     ],
                     'performedPeriod' => [
@@ -295,7 +295,7 @@
                     'performer' => [
                         [
                             'actor' => [
-                                'reference' => 'Practitioner/N10000001',
+                                'reference' => 'Practitioner/{practitioner_id}',
                                 'display' => 'Nama Dokter Pelaksana Tindakan'
                             ]
                         ]

@@ -46,7 +46,7 @@
                                 ]
                             ],
                             'individual' => [
-                                'reference' => 'Practitioner/N10000001', // ID NIK/SatuSehat Dokter DPJP
+                                'reference' => 'Practitioner/{practitioner_id}', // ID NIK/SatuSehat Dokter DPJP
                                 'display' => 'Nama Dokter Beserta Gelar'
                             ]
                         ]
@@ -57,7 +57,7 @@
                     'location' => [
                         [
                             'location' => [
-                                'reference' => 'Location/b017aa54-f1df-4ec6-b0b4-8bc852dfd112', // ID Location Ruangan/Poli di SATUSEHAT
+                                'reference' => 'Location/{location_id}', // ID Location Ruangan/Poli di SATUSEHAT
                                 'display' => 'Poliklinik Penyakit Dalam - Ruang 102'
                             ],
                             'status' => 'active'
@@ -121,7 +121,7 @@
                                 ]
                             ],
                             'individual' => [
-                                'reference' => 'Practitioner/N10000001',
+                                'reference' => 'Practitioner/{practitioner_id}',
                                 'display' => 'Nama Dokter Beserta Gelar'
                             ]
                         ]
@@ -133,7 +133,7 @@
                     'location' => [
                         [
                             'location' => [
-                                'reference' => 'Location/b017aa54-f1df-4ec6-b0b4-8bc852dfd112',
+                                'reference' => 'Location/{location_id}',
                                 'display' => 'Poliklinik Penyakit Dalam - Ruang 102'
                             ],
                             'status' => 'completed'

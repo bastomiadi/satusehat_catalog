@@ -47,14 +47,14 @@
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
-                        'reference' => 'Encounter/4f735a03-128b-464d-bf91-e7eacdf1c38f', // Mengikat ID Encounter kunjungan terkait
+                        'reference' => 'Encounter/{encounter_id}', // Mengikat ID Encounter kunjungan terkait
                         'display' => 'Kunjungan Pemeriksaan Fisik Terkait'
                     ],
                     'effectiveDateTime' => '2026-05-29T10:00:00+07:00', // Waktu saat pemeriksaan/pengukuran dilakukan
                     'issued' => '2026-05-29T10:05:00+07:00', // Waktu saat data ini dicatat dan dirilis ke sistem
                     'performer' => [
                         [
-                            'reference' => 'Practitioner/N10000001', // ID Tenaga Kesehatan / Perawat / Dokter pemeriksa
+                            'reference' => 'Practitioner/{practitioner_id}', // ID Tenaga Kesehatan / Perawat / Dokter pemeriksa
                             'display' => 'Nama Tenaga Kesehatan Pemeriksa'
                         ]
                     ],
@@ -186,13 +186,13 @@
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
-                        'reference' => 'Encounter/4f735a03-128b-464d-bf91-e7eacdf1c38f'
+                        'reference' => 'Encounter/{encounter_id}'
                     ],
                     'effectiveDateTime' => '2026-05-29T10:00:00+07:00',
                     'issued' => '2026-05-29T10:10:00+07:00',
                     'performer' => [
                         [
-                            'reference' => 'Practitioner/N10000001',
+                            'reference' => 'Practitioner/{practitioner_id}',
                             'display' => 'Nama Tenaga Kesehatan Pemeriksa'
                         ]
                     ],

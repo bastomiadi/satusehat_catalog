@@ -191,12 +191,12 @@
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
-                        'reference' => 'Encounter/4f735a03-128b-464d-bf91-e6eacdf1c38f' // Mengikat ID Encounter kunjungan
+                        'reference' => 'Encounter/{encounter_id}' // Mengikat ID Encounter kunjungan
                     ],
                     'date' => '2026-05-29T16:00:00+07:00', // Waktu pembuatan dokumen
                     'author' => [
                         [
-                            'reference' => 'Practitioner/N10000001', // ID Dokter pembuat dokumen
+                            'reference' => 'Practitioner/{practitioner_id}', // ID Dokter pembuat dokumen
                             'display' => 'Nama Dokter Penanggung Jawab'
                         ]
                     ],
@@ -260,12 +260,12 @@
                         'display' => 'Nama Pasien Sesuai KTP (Updated)'
                     ],
                     'encounter' => [
-                        'reference' => 'Encounter/4f735a03-128b-464d-bf91-e6eacdf1c38f'
+                        'reference' => 'Encounter/{encounter_id}'
                     ],
                     'date' => '2026-05-29T16:15:00+07:00', // Jam modifikasi dokumen
                     'author' => [
                         [
-                            'reference' => 'Practitioner/N10000001',
+                            'reference' => 'Practitioner/{practitioner_id}',
                             'display' => 'Nama Dokter Penanggung Jawab'
                         ]
                     ],

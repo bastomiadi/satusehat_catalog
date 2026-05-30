@@ -35,7 +35,7 @@
                         ]
                     ],
                     'medicationReference' => [
-                        'reference' => 'Medication/4a6d884b-8d4b-4e16-b192-6416502d0999', // Merujuk ke ID resource Medication yang sudah di-POST sebelumnya
+                        'reference' => 'Medication/{medication_id}', // Merujuk ke ID resource Medication yang sudah di-POST sebelumnya
                         'display' => 'Amoxicillin 500 mg Kaplet'
                     ],
                     'subject' => [
@@ -43,11 +43,11 @@
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
-                        'reference' => 'Encounter/4f735a03-128b-464d-bf91-e6eacdf1c38f' // Mengikat ID Encounter kunjungan terkait
+                        'reference' => 'Encounter/{encounter_id}' // Mengikat ID Encounter kunjungan terkait
                     ],
                     'authoredOn' => '2026-05-29T10:00:00+07:00', // Waktu penulisan resep oleh dokter
                     'requester' => [
-                        'reference' => 'Practitioner/N10000001', // ID Dokter DPJP penanggung jawab yang menulis resep
+                        'reference' => 'Practitioner/{practitioner_id}', // ID Dokter DPJP penanggung jawab yang menulis resep
                         'display' => 'Nama Dokter Penulis Resep'
                     ],
                     'reasonCode' => [
@@ -226,7 +226,7 @@
                         ]
                     ],
                     'medicationReference' => [
-                        'reference' => 'Medication/4a6d884b-8d4b-4e16-b192-6416502d0999',
+                        'reference' => 'Medication/{medication_id}',
                         'display' => 'Amoxicillin 500 mg Kaplet'
                     ],
                     'subject' => [
@@ -234,11 +234,11 @@
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
-                        'reference' => 'Encounter/4f735a03-128b-464d-bf91-e6eacdf1c38f'
+                        'reference' => 'Encounter/{encounter_id}'
                     ],
                     'authoredOn' => '2026-05-29T10:00:00+07:00',
                     'requester' => [
-                        'reference' => 'Practitioner/N10000001',
+                        'reference' => 'Practitioner/{practitioner_id}',
                         'display' => 'Nama Dokter Penulis Resep'
                     ],
                     'reasonCode' => [

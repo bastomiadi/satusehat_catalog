@@ -63,7 +63,7 @@
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
-                        'reference' => 'Encounter/4f735a03-128b-464d-bf91-e7eacdf1c38f', // Mengikat ID Encounter kunjungan terkait
+                        'reference' => 'Encounter/{encounter_id}', // Mengikat ID Encounter kunjungan terkait
                         'display' => 'Kunjungan Terkait Diagnosis Ini'
                     ],
                     'onsetDateTime' => '2026-05-29T08:00:00+07:00', // Waktu pertama kali gejala/kondisi dirasakan
@@ -228,11 +228,11 @@
                         ]
                     ],
                     'subject' => [
-                        'reference' => 'Patient/100000000001',
+                        'reference' => 'Patient/{patient_id}',
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
-                        'reference' => 'Encounter/4f735a03-128b-464d-bf91-e7eacdf1c38f'
+                        'reference' => 'Encounter/{encounter_id}'
                     ],
                     'onsetDateTime' => '2026-05-29T08:00:00+07:00',
                     'recordedDate' => '2026-05-29T10:15:00+07:00',

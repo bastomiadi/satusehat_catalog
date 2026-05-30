@@ -44,7 +44,7 @@
                     'diagnosis' => [
                         [
                             'condition' => [
-                                'reference' => 'Condition/f24ad72a-14ba-46e3-982c-7b04901fa093', // ID Diagnosis dasar dari resource Condition
+                                'reference' => 'Condition/{condition_id}', // ID Diagnosis dasar dari resource Condition
                                 'display' => 'Tuberculosis of lung, bacteriologically and histologically confirmed'
                             ],
                             'role' => [
@@ -70,7 +70,7 @@
                         'start' => '2026-05-29T08:00:00+07:00' // Rentang waktu asuhan keperawatan dimulai
                     ],
                     'careManager' => [
-                        'reference' => 'Practitioner/N10000001', // Dokter penanggung jawab kasus (DPJP) utama
+                        'reference' => 'Practitioner/{practitioner_id}', // Dokter penanggung jawab kasus (DPJP) utama
                         'display' => 'Nama Dokter DPJP Utama'
                     ]
                 ]
@@ -161,7 +161,7 @@
                     'diagnosis' => [
                         [
                             'condition' => [
-                                'reference' => 'Condition/f24ad72a-14ba-46e3-982c-7b04901fa093',
+                                'reference' => 'Condition/{condition_id}',
                                 'display' => 'Tuberculosis of lung, bacteriologically and histologically confirmed'
                             ],
                             'role' => [
@@ -188,7 +188,7 @@
                         'end' => '2026-05-29T10:00:00+07:00' // Tanggal asuhan resmi dinyatakan berakhir/tutup kasus
                     ],
                     'careManager' => [
-                        'reference' => 'Practitioner/N10000001',
+                        'reference' => 'Practitioner/{practitioner_id}',
                         'display' => 'Nama Dokter DPJP Utama'
                     ]
                 ]

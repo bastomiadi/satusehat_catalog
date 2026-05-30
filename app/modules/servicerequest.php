@@ -94,16 +94,16 @@
                         ]
                     ],
                     'subject' => [
-                        'reference' => 'Patient/100000000001', // ID Pasien riil SATUSEHAT
+                        'reference' => 'Patient/{patient_id}', // ID Pasien riil SATUSEHAT
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
-                        'reference' => 'Encounter/4f735a03-128b-464d-9617-e98be002cdfa' // Mengikat ID Encounter kunjungan terkait
+                        'reference' => 'Encounter/{encounter_id}' // Mengikat ID Encounter kunjungan terkait
                     ],
                     'occurrenceDateTime' => '2026-05-29T10:15:00+07:00', // Jadwal rencana pelaksanaan pemeriksaan dilakukan
                     'authoredOn' => '2026-05-29T10:00:00+07:00', // Waktu pembuatan order/instruksi oleh dokter pelapor
                     'requester' => [
-                        'reference' => 'Practitioner/N10000001', // ID Dokter DPJP yang meminta pemeriksaan
+                        'reference' => 'Practitioner/{practitioner_id}', // ID Dokter DPJP yang meminta pemeriksaan
                         'display' => 'Nama Dokter DPJP Pengirim'
                     ],
                     'performer' => [
@@ -191,16 +191,16 @@
                         ]
                     ],
                     'subject' => [
-                        'reference' => 'Patient/100000000001',
+                        'reference' => 'Patient/{patient_id}',
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
-                        'reference' => 'Encounter/4f735a03-128b-464d-9617-e98be002cdfa'
+                        'reference' => 'Encounter/{encounter_id}'
                     ],
                     'occurrenceDateTime' => '2026-05-29T10:15:00+07:00',
                     'authoredOn' => '2026-05-29T10:00:00+07:00',
                     'requester' => [
-                        'reference' => 'Practitioner/N10000001',
+                        'reference' => 'Practitioner/{practitioner_id}',
                         'display' => 'Nama Dokter DPJP Pengirim'
                     ],
                     'performer' => [

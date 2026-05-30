@@ -155,7 +155,7 @@
                         'reference' => 'Organization/{org_id}' // ID Organisasi pengelola
                     ],
                     'partOf' => [
-                        'reference' => 'Location/3362d984-af65-43ac-8e5c-7db2b3be3f8b' // ID Gedung/Lokasi Induk
+                        'reference' => 'Location/{location_id}' // ID Gedung/Lokasi Induk
                     ]
                 ]
             ],

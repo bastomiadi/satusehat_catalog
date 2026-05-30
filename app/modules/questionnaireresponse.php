@@ -67,11 +67,11 @@
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
-                        'reference' => 'Encounter/bc5edf78-ea8d-4827-97b3-3c73a810fa29' // Mengikat ID Encounter kunjungan
+                        'reference' => 'Encounter/{encounter_id}' // Mengikat ID Encounter kunjungan
                     ],
                     'authored' => '2026-05-29T17:00:00+07:00', // Waktu pengisian kuesioner dilakukan
                     'author' => [
-                        'reference' => 'Practitioner/N10000001' // ID Tenaga Kesehatan / Dokter yang mengonfirmasi asesmen
+                        'reference' => 'Practitioner/{practitioner_id}' // ID Tenaga Kesehatan / Dokter yang mengonfirmasi asesmen
                     ],
                     'item' => [
                         [
@@ -123,11 +123,11 @@
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
-                        'reference' => 'Encounter/bc5edf78-ea8d-4827-97b3-3c73a810fa29'
+                        'reference' => 'Encounter/{encounter_id}'
                     ],
                     'authored' => '2026-05-29T17:15:00+07:00', // Waktu modifikasi data jawaban
                     'author' => [
-                        'reference' => 'Practitioner/N10000001'
+                        'reference' => 'Practitioner/{practitioner_id}'
                     ],
                     'item' => [
                         [

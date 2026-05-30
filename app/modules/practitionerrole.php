@@ -49,7 +49,7 @@
                     'resourceType' => 'PractitionerRole',
                     'active' => true, // Status keaktifan peran nakes di fasyankes
                     'practitioner' => [
-                        'reference' => 'Practitioner/N10000001', // ID Praktisi/Dokter di SATUSEHAT
+                        'reference' => 'Practitioner/{practitioner_id}', // ID Praktisi/Dokter di SATUSEHAT
                         'display' => 'Nama Dokter Spesialis'
                     ],
                     'organization' => [
@@ -80,7 +80,7 @@
                     ],
                     'location' => [
                         [
-                            'reference' => 'Location/b016428c-4f1e-4503-a12b-3a3d582cdcf8', // ID Ruangan/Poli tempat bertugas
+                            'reference' => 'Location/{location_id}', // ID Ruangan/Poli tempat bertugas
                             'display' => 'Poliklinik Anak Spesialis Lantai 2'
                         ]
                     ],
@@ -116,11 +116,11 @@
                     'id' => '{id}', // WAJIB ada di dalam body PUT dan nilainya harus sama dengan {id} di URL
                     'active' => true,
                     'practitioner' => [
-                        'reference' => 'Practitioner/N10000001',
+                        'reference' => 'Practitioner/{practitioner_id}',
                         'display' => 'Nama Dokter Spesialis'
                     ],
                     'organization' => [
-                        'reference' => 'Organization/10000004',
+                        'reference' => 'Organization/{organization_id}',
                         'display' => 'Nama Rumah Sakit / Klinik Lokal'
                     ],
                     'code' => [
@@ -147,7 +147,7 @@
                     ],
                     'location' => [
                         [
-                            'reference' => 'Location/b016428c-4f1e-4503-a12b-3a3d582cdcf8',
+                            'reference' => 'Location/{location_id}',
                             'display' => 'Poliklinik Anak Utama (Pindahan Ruang Baru)' // Contoh skenario pembaruan lokasi poli bertugas
                         ]
                     ],

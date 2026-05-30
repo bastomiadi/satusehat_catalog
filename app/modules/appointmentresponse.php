@@ -54,11 +54,11 @@
                 'body' => [
                     'resourceType' => 'AppointmentResponse',
                     'appointment' => [
-                        'reference' => 'Appointment/98eaf00e-4464-4dfc-a3cc-da9646f99108', // Merujuk pada ID Appointment induk
+                        'reference' => 'Appointment/{appointment_id}', // Merujuk pada ID Appointment induk
                         'display' => 'Pemeriksaan Rutin Poli Anak'
                     ],
                     'actor' => [
-                        'reference' => 'Practitioner/N10000001', // ID Partisipan yang merespons (bisa Practitioner atau Patient)
+                        'reference' => 'Practitioner/{practitioner_id}', // ID Partisipan yang merespons (bisa Practitioner atau Patient)
                         'display' => 'Nama Dokter Spesialis Anak'
                     ],
                     'participantStatus' => 'accepted', // Status konfirmasi: accepted | declined | tentative | needs-action
@@ -87,11 +87,11 @@
                     'resourceType' => 'AppointmentResponse',
                     'id' => '{id}', // WAJIB ada di dalam body PUT dan nilainya harus sama dengan {id} di URL
                     'appointment' => [
-                        'reference' => 'Appointment/98eaf00e-4464-4dfc-a3cc-da9646f99108',
+                        'reference' => 'Appointment/{appointment_id}',
                         'display' => 'Pemeriksaan Rutin Poli Anak'
                     ],
                     'actor' => [
-                        'reference' => 'Practitioner/N10000001',
+                        'reference' => 'Practitioner/{practitioner_id}',
                         'display' => 'Nama Dokter Spesialis Anak'
                     ],
                     'participantStatus' => 'declined', // Contoh perubahan respon: diubah dari accepted menjadi declined karena dokter mendadak berhalangan

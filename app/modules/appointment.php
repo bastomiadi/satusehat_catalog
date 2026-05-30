@@ -55,7 +55,7 @@
                     ],
                     'slot' => [
                         [
-                            'reference' => 'Slot/e2fdfc6f-28ff-46be-b68b-b73d982cdcf8' // Menandai blok celah waktu Slot yang di-booking
+                            'reference' => 'Slot/{slot_id}' // Menandai blok celah waktu Slot yang di-booking
                         ]
                     ],
                     'start' => '2026-06-01T09:00:00+07:00', // Estimasi waktu mulai janji temu
@@ -73,7 +73,7 @@
                         ],
                         [
                             'actor' => [
-                                'reference' => 'Practitioner/N10000001', // Referensi dokter pemeriksa
+                                'reference' => 'Practitioner/{practitioner_id}', // Referensi dokter pemeriksa
                                 'display' => 'Nama Dokter Spesialis Anak'
                             ],
                             'status' => 'accepted',
@@ -81,7 +81,7 @@
                         ],
                         [
                             'actor' => [
-                                'reference' => 'Location/b016428c-4f1e-4503-a12b-3a3d582cdcf8', // Ruangan Poliklinik tujuan
+                                'reference' => 'Location/{location_id}', // Ruangan Poliklinik tujuan
                                 'display' => 'Poliklinik Anak Lantai 2'
                             ],
                             'status' => 'accepted',
@@ -196,7 +196,7 @@
                     ],
                     'slot' => [
                         [
-                            'reference' => 'Slot/e2fdfc6f-28ff-46be-b68b-b73d982cdcf8'
+                            'reference' => 'Slot/{slot_id}'
                         ]
                     ],
                     'start' => '2026-06-01T09:00:00+07:00',
@@ -214,7 +214,7 @@
                         ],
                         [
                             'actor' => [
-                                'reference' => 'Practitioner/N10000001',
+                                'reference' => 'Practitioner/{practitioner_id}',
                                 'display' => 'Nama Dokter Spesialis Anak'
                             ],
                             'status' => 'accepted',
@@ -222,7 +222,7 @@
                         ],
                         [
                             'actor' => [
-                                'reference' => 'Location/b016428c-4f1e-4503-a12b-3a3d582cdcf8',
+                                'reference' => 'Location/{location_id}',
                                 'display' => 'Poliklinik Anak Lantai 2'
                             ],
                             'status' => 'accepted',

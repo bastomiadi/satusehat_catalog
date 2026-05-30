@@ -57,7 +57,7 @@
                         ]
                     ],
                     'schedule' => [
-                        'reference' => 'Schedule/67890-schedule-id' // Merujuk pada ID Schedule (Induk Jadwal) Dokter terkait
+                        'reference' => 'Schedule/{chedule_id}' // Merujuk pada ID Schedule (Induk Jadwal) Dokter terkait
                     ],
                     'status' => 'free', // Status ketersediaan: free (kosong) | busy (terisi) | busy-tentative | onhold | entered-in-error
                     'start' => '2026-06-01T09:00:00+07:00', // Waktu mulai slot janji temu
@@ -96,7 +96,7 @@
                         ]
                     ],
                     'schedule' => [
-                        'reference' => 'Schedule/67890-schedule-id'
+                        'reference' => 'Schedule/{schedule_id}'
                     ],
                     'status' => 'busy', // Contoh perubahan status: diubah menjadi busy karena celah waktu sudah di-booking pasien
                     'start' => '2026-06-01T09:00:00+07:00',

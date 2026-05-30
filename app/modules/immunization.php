@@ -144,7 +144,7 @@
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
-                        'reference' => 'Encounter/bc5edf78-ea8d-4827-97b3-3c73a810fa29' // Mengikat ID Encounter kunjungan pasien
+                        'reference' => 'Encounter/{encounter_id}' // Mengikat ID Encounter kunjungan pasien
                     ],
                     'occurrenceDateTime' => '2026-05-29T10:00:00+07:00', // Waktu penyuntikan vaksin dilakukan
                     'primarySource' => true, // Set true jika fasyankes Anda yang langsung menyuntikkan
@@ -161,7 +161,7 @@
                     'performer' => [
                         [
                             'actor' => [
-                                'reference' => 'Practitioner/N10000001', // ID Dokter/Perawat/Bidan pelaksana vaksinasi
+                                'reference' => 'Practitioner/{practitioner_id}', // ID Dokter/Perawat/Bidan pelaksana vaksinasi
                                 'display' => 'Nama Tenaga Kesehatan Vaksinator'
                             ]
                         ]
@@ -215,7 +215,7 @@
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
-                        'reference' => 'Encounter/bc5edf78-ea8d-4827-97b3-3c73a810fa29'
+                        'reference' => 'Encounter/{encounter_id}'
                     ],
                     'occurrenceDateTime' => '2026-05-29T10:00:00+07:00',
                     'primarySource' => true,
@@ -232,7 +232,7 @@
                     'performer' => [
                         [
                             'actor' => [
-                                'reference' => 'Practitioner/N10000001',
+                                'reference' => 'Practitioner/{practitioner_id}',
                                 'display' => 'Nama Tenaga Kesehatan Vaksinator'
                             ]
                         ]
