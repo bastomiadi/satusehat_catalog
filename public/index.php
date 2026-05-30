@@ -5,9 +5,6 @@
  * Version 3.0 - Modern UI
  */
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 // Load configuration
 $config = include __DIR__ . '/../config/config.php';
 
@@ -49,62 +46,10 @@ $modules = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SATUSEHAT API Catalog - Home</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#1e40af',
-                        secondary: '#3b82f6',
-                        success: '#10b981',
-                        warning: '#f59e0b',
-                        danger: '#ef4444',
-                        dark: '#1e293b',
-                        light: '#f8fafc',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-        }
-        .card-hover {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        .module-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-    </style>
+    <?php include __DIR__ . '/inc/styles.php'; ?>
 </head>
 <body class="bg-gray-50 min-h-screen">
-    <!-- Header -->
-    <header class="gradient-bg text-white shadow-lg sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-3">
-                    <i class="fas fa-heartbeat text-2xl"></i>
-                    <div>
-                        <h1 class="text-xl font-bold">SATUSEHAT API Catalog</h1>
-                        <p class="text-sm opacity-90">FHIR R4 Integration Platform</p>
-                    </div>
-                </div>
-                <nav class="flex space-x-2">
-                    <a href="index.php" class="px-4 py-2 bg-white text-primary rounded-lg font-semibold text-sm">Home</a>
-                    <a href="catalog.php" class="px-4 py-2 bg-white bg-opacity-20 rounded-lg text-sm hover:bg-opacity-30">API Catalog</a>
-                </nav>
-            </div>
-        </div>
-    </header>
+    <?php include __DIR__ . '/inc/header.php'; ?>
 
     <main class="container mx-auto px-4 py-8 pt-20">
         <div class="max-w-7xl mx-auto">
@@ -142,10 +87,6 @@ $modules = [
         </div>
     </main>
 
-    <footer class="bg-white border-t py-6 mt-12">
-        <div class="container mx-auto px-4 text-center text-gray-500">
-        <p>SATUSEHAT API Catalog Platform v1.0 | © <?= date('Y') ?> Kemenkes RI</p>
-        </div>
-    </footer>
+    <?php include __DIR__ . '/inc/footer.php'; ?>
 </body>
 </html>

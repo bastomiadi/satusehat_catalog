@@ -1,3 +1,5 @@
 .env
 /storage/cache/*
 !/storage/cache
+
+.DS_Store

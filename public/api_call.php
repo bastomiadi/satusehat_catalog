@@ -4,8 +4,10 @@
  * Native PHP + JSON API
  */
 
+// Error reporting - disable display_errors in production
+$isProduction = ($_ENV['APP_ENV'] ?? 'development') === 'production';
 error_reporting(E_ALL);
-ini_set('display_errors', 1);
+ini_set('display_errors', $isProduction ? 0 : 1);
 
 session_start();
 
@@ -56,6 +58,8 @@ function getAccessToken($auth_url, $client_id, $client_secret, $tokenCacheFile =
     }
     
     // Use cURL for better compatibility
+    // SSL verification - can be disabled for development, enable for production
+    $verifySSL = !($isProduction ?? false);
     $ch = curl_init();
     curl_setopt_array($ch, [
         CURLOPT_URL => $auth_url . '/accesstoken?grant_type=client_credentials',
@@ -69,7 +73,8 @@ function getAccessToken($auth_url, $client_id, $client_secret, $tokenCacheFile =
             'Content-Type: application/x-www-form-urlencoded',
         ],
         CURLOPT_TIMEOUT => 30,
-        CURLOPT_SSL_VERIFYPEER => false,
+        CURLOPT_SSL_VERIFYPEER => $verifySSL,
+        CURLOPT_SSL_VERIFYHOST => $verifySSL ? 2 : 0,
     ]);
     
     $response = curl_exec($ch);
@@ -135,8 +140,8 @@ function makeApiCall($base_url, $token, $method, $path, $org_id, $body = null) {
             'ignore_errors' => true,
         ],
         'ssl' => [
-            'verify_peer' => false,
-            'verify_peer_name' => false,
+            'verify_peer' => $isProduction ?? false,
+            'verify_peer_name' => $isProduction ?? false,
         ]
     ];
     
@@ -168,6 +173,21 @@ if ($isApiRequest && $input) {
     $body = $_REQUEST['body'] ?? null;
 }
 
+// Validate HTTP method
+$allowedMethods = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'];
+if (!in_array(strtoupper($method), $allowedMethods)) {
+    $method = 'GET';
+}
+
+// Validate environment
+if (!isset($satusehat[$currentEnv])) {
+    $currentEnv = 'sandbox';
+    $envConfig = $satusehat[$currentEnv];
+}
+
+// Sanitize path (prevent directory traversal)
+$path = str_replace(['../', '..\\'], '', $path);
+
 // Replace path parameters
 if (!empty($params)) {
     foreach ($params as $key => $value) {
@@ -181,9 +201,14 @@ $token = $tokenResult['access_token'] ?? null;
 $tokenError = $tokenResult['error'] ?? null;
 $_SESSION['org_id'] = $org_id;
 
-// Debug: Log token result
-if (isset($_GET['debug']) && $_GET['debug'] === '1') {
-    error_log('Token Result: ' . print_r($tokenResult, true));
+// Debug: Log token result (only in development mode)
+if (isset($_GET['debug']) && $_GET['debug'] === '1' && !($isProduction ?? false)) {
+    // Sanitize sensitive data before logging
+    $safeTokenResult = $tokenResult;
+    if (isset($safeTokenResult['access_token'])) {
+        $safeTokenResult['access_token'] = '[REDACTED]';
+    }
+    error_log('Token Result: ' . print_r($safeTokenResult, true));
 }
 
 // Make API call
@@ -192,8 +217,8 @@ $response = $apiResult['response'];
 $finalPath = $apiResult['path'];
 $result = json_decode($response, true);
 
-// Debug: Log API response
-if (isset($_GET['debug']) && $_GET['debug'] === '1') {
+// Debug: Log API response (only in development mode)
+if (isset($_GET['debug']) && $_GET['debug'] === '1' && !($isProduction ?? false)) {
     error_log('API Response: ' . $response);
 }
 
@@ -207,8 +232,12 @@ if ($isApiRequest) {
         'success' => $token && !$tokenError,
         'token_error' => $tokenError,
         'data' => $result,
-        'raw_response' => $response
     ];
+    
+    // Only include raw_response in debug mode and non-production
+    if (isset($_GET['debug']) && $_GET['debug'] === '1' && !($isProduction ?? false)) {
+        $output['raw_response'] = $response;
+    }
     
     echo json_encode($output);
     exit;
