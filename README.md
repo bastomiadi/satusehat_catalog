@@ -14,17 +14,33 @@ A native PHP + Tailwind CSS platform for exploring and testing SATUSEHAT FHIR R4
 ## Project Structure
 
 ```
-satu-sehat/
+satusehat_catalog/
+├── app/
+│   └── modules/            # FHIR R4 resource modules
+│       ├── patient.php
+│       ├── encounter.php
+│       ├── condition.php
+│       └── ... (40+ modules)
 ├── config/
-│   └── config.php          # SATUSEHAT API configuration
+│   └── config.php          # SATUSEHAT API configuration loader
 ├── public/
 │   ├── index.php           # Homepage - Module list display
 │   ├── catalog.php         # API catalog with endpoint testing
 │   ├── api_call.php        # API request handler
-│   └── index.php
+│   └── inc/
+│       ├── header.php
+│       ├── footer.php
+│       ├── helpers.php
+│       ├── scripts.php
+│       └── styles.php
 ├── storage/
 │   └── cache/              # Token cache directory
+├── Satu-Sehat/
+│   ├── collections/        # Postman collections
+│   └── environments/       # Postman environment files
+├── screenshoot/            # Application screenshots
 ├── .env                    # Environment variables
+├── .env.example            # Example environment file
 └── README.md
 ```
 
@@ -43,22 +59,33 @@ satu-sehat/
 
 ## Configuration
 
-Edit `config/config.php` or set environment variables:
+Set environment variables in `.env`:
 
-```php
-$satusehat = [
-    'sandbox' => [
-        'auth_url' => 'https://api-sandbox.satusehat.com',
-        'base_url' => 'https://api-satusehat.com',
-        'organization_id' => 'your-org-id',
-        'client_id' => 'your-client-id',
-        'client_secret' => 'your-client-secret'
-    ],
-    'production' => [
-        // Production configuration read .env.example file
-    ]
-];
+```env
+# Application Environment
+APP_ENV=development
+APP_DEBUG=true
+
+# SATUSEHAT Sandbox Credentials
+SATUSEHAT_AUTH_URL=https://api-satusehat-stg.dto.kemkes.go.id/oauth2/v1
+SATUSEHAT_BASE_URL=https://api-satusehat-stg.dto.kemkes.go.id
+SATUSEHAT_ORGANIZATION_ID=your-org-id
+SATUSEHAT_CLIENT_ID=your-client-id
+SATUSEHAT_CLIENT_SECRET=your-client-secret
+
+# SATUSEHAT Production Credentials
+SATUSEHAT_PROD_AUTH_URL=https://api-satusehat.kemkes.go.id/oauth2/v1
+SATUSEHAT_PROD_BASE_URL=https://api-satusehat.kemkes.go.id
+SATUSEHAT_PROD_ORGANIZATION_ID=your-prod-org-id
+SATUSEHAT_PROD_CLIENT_ID=your-prod-client-id
+SATUSEHAT_PROD_CLIENT_SECRET=your-prod-client-secret
 ```
+
+**Environment Settings:**
+- `APP_ENV=production` - Enables SSL verification, disables debug output, hides raw responses
+- `APP_ENV=development` - Disables SSL verification for local testing, enables debug mode
+
+For production deployment, set `APP_ENV=production` to enable all security features.
 
 ## Usage
 
@@ -112,6 +139,34 @@ When testing an API endpoint:
 - Close the modal or press ESC to continue
 - Error messages are displayed with clear formatting
 
+## API Call Handler
+
+The `public/api_call.php` handles all API requests with the following features:
+
+### Request Methods
+- **JSON API**: Send POST requests with `Content-Type: application/json`
+- **Form Data**: Use standard form parameters
+
+### JSON API Format
+```json
+{
+    "method": "GET",
+    "path": "Patient",
+    "params": {
+        "id": "patient-id"
+    },
+    "body": {}
+}
+```
+
+### Debug Mode
+Add `?debug=1` to the URL in development mode to:
+- View raw API responses
+- See token information (sanitized)
+- Access detailed error messages
+
+**Note**: Debug mode is automatically disabled in production.
+
 ## Screenshots
 
 ### Homepage - Module List
@@ -122,14 +177,25 @@ When testing an API endpoint:
 
 ## Security Notes
 
-- Token is cached locally for performance
-- HTTPS is required for API calls
-- Rate limiting: 1 request per minute after failed authentication
+- **Token Caching**: Tokens are cached locally in `storage/cache/` for performance
+- **HTTPS Required**: All API calls require HTTPS
+- **SSL Verification**: Enabled in production mode (`APP_ENV=production`)
+- **Error Display**: Disabled in production to prevent information disclosure
+- **Debug Mode**: Only available in development mode, disabled in production
+- **Input Validation**: HTTP methods are validated against a whitelist
+- **Path Sanitization**: Directory traversal attacks are prevented
+- **Sensitive Data Protection**: Tokens and raw responses are redacted in production
 
 ## License
 
 © 2026 Kemenkes RI (Ministry of Health Indonesia)
 
 ## Version
+
+v1.1 - Security improvements and environment-based configuration
+- Added production mode with SSL verification
+- Disabled debug output in production
+- Added input validation and path sanitization
+- Redacted sensitive data in production responses
 
 v1.0 - Modern UI with modal responses
