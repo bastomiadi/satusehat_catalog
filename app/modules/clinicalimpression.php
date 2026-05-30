@@ -24,7 +24,7 @@
                     'status' => 'completed', // Status: in-progress | completed | entered-in-error
                     'description' => 'Berdasarkan hasil anamnesis dan pemeriksaan fisik, pasien menunjukkan gejala klinis gastroenteritis akut dengan dehidrasi ringan.', // Deskripsi naratif ringkasan temuan dokter
                     'subject' => [
-                        'reference' => 'Patient/100000000001', // ID Pasien riil SATUSEHAT
+                        'reference' => 'Patient/{patient_id}', // ID Pasien riil SATUSEHAT
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
@@ -141,7 +141,7 @@
                     'status' => 'completed',
                     'description' => 'Berdasarkan peninjauan ulang dan hasil lab tambahan, dipastikan kondisi mengarah pada infeksi bakteri saluran pencernaan.', // Skenario pembaruan: Perubahan deskripsi klinis lanjutan
                     'subject' => [
-                        'reference' => 'Patient/100000000001',
+                        'reference' => 'Patient/{patient_id}',
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [

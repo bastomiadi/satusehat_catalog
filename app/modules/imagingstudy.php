@@ -64,7 +64,7 @@
                     'resourceType' => 'ImagingStudy',
                     'status' => 'available', // Pilihan status: registered | available | cancelled | entered-in-error | unknown
                     'subject' => [
-                        'reference' => 'Patient/100000000001', // Ganti dengan ID Pasien riil SATUSEHAT
+                        'reference' => 'Patient/{patient_id}', // Ganti dengan ID Pasien riil SATUSEHAT
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
@@ -80,7 +80,7 @@
                     'identifier' => [
                         [
                             'use' => 'official',
-                            'system' => 'http://sys-ids.kemkes.go.id/acsn/100000000001', // Menggunakan ID Pasien di dalam URL system
+                            'system' => 'http://sys-ids.kemkes.go.id/acsn/{patient_id}', // Menggunakan ID Pasien di dalam URL system
                             'value' => 'ACC-2026-0001' // Nomor Aksesi / Kode Pemeriksaan Radiologi lokal
                         ]
                     ],

@@ -60,7 +60,7 @@
                     'resourceType' => 'FamilyMemberHistory',
                     'status' => 'completed', // Pilihan status: partial | completed | entered-in-error | health-unknown
                     'patient' => [
-                        'reference' => 'Patient/100000000001', // Ganti dengan ID Pasien Utama SATUSEHAT
+                        'reference' => 'Patient/{patient_id}', // Ganti dengan ID Pasien Utama SATUSEHAT
                         'display' => 'Nama Pasien Utama'
                     ],
                     'relationship' => [
@@ -124,7 +124,7 @@
                     'id' => '{id}', // WAJIB ada di dalam body PUT dan nilainya harus sama dengan {id} di URL
                     'status' => 'completed',
                     'patient' => [
-                        'reference' => 'Patient/100000000001',
+                        'reference' => 'Patient/{patient_id}',
                         'display' => 'Nama Pasien Utama'
                     ],
                     'relationship' => [

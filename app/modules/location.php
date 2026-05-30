@@ -124,7 +124,7 @@
                     'identifier' => [
                         [
                             'use' => 'official',
-                            'system' => 'http://sys-ids.kemkes.go.id/location/100028344', // ID Fasyankes Utama Anda
+                            'system' => 'http://sys-ids.kemkes.go.id/location/{org_id}', // ID Fasyankes Utama Anda
                             'value' => 'G-Poli-Umum' // Kode unik internal dari SIMRS Anda
                         ]
                     ],
@@ -152,7 +152,7 @@
                         ]
                     ],
                     'managingOrganization' => [
-                        'reference' => 'Organization/100028344' // ID Organisasi pengelola
+                        'reference' => 'Organization/{org_id}' // ID Organisasi pengelola
                     ],
                     'partOf' => [
                         'reference' => 'Location/3362d984-af65-43ac-8e5c-7db2b3be3f8b' // ID Gedung/Lokasi Induk

@@ -140,7 +140,7 @@
                         ]
                     ],
                     'patient' => [
-                        'reference' => 'Patient/100000000001', // Ganti dengan ID Pasien riil SATUSEHAT
+                        'reference' => 'Patient/{patient_id}', // Ganti dengan ID Pasien riil SATUSEHAT
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
@@ -211,7 +211,7 @@
                         ]
                     ],
                     'patient' => [
-                        'reference' => 'Patient/100000000001',
+                        'reference' => 'Patient/{patient_id}',
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [

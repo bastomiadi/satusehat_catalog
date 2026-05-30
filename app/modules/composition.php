@@ -187,7 +187,7 @@
                         ]
                     ],
                     'subject' => [
-                        'reference' => 'Patient/100000000001', // Ganti dengan ID Pasien asli
+                        'reference' => 'Patient/{patient_id}', // Ganti dengan ID Pasien asli
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
@@ -202,7 +202,7 @@
                     ],
                     'title' => 'Resume Medis Pasien',
                     'custodian' => [
-                        'reference' => 'Organization/100028344' // ID Fasyankes / Rumah Sakit utama
+                        'reference' => 'Organization/{org_id}' // ID Fasyankes / Rumah Sakit utama
                     ],
                     'section' => [
                         [
@@ -256,7 +256,7 @@
                         ]
                     ],
                     'subject' => [
-                        'reference' => 'Patient/100000000001',
+                        'reference' => 'Patient/{patient_id}',
                         'display' => 'Nama Pasien Sesuai KTP (Updated)'
                     ],
                     'encounter' => [
@@ -271,7 +271,7 @@
                     ],
                     'title' => 'Resume Medis Pasien (Terubah)',
                     'custodian' => [
-                        'reference' => 'Organization/100028344'
+                        'reference' => 'Organization/{org_id}'
                     ],
                     'section' => [
                         [

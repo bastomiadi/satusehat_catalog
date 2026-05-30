@@ -49,7 +49,7 @@
                     'resourceType' => 'HealthcareService',
                     'active' => true, // Status operasional jenis layanan di rumah sakit/klinik
                     'providedBy' => [
-                        'reference' => 'Organization/10000004' // ID Organisasi/Fasyankes induk Anda di SATUSEHAT
+                        'reference' => 'Organization/{org_id}' // ID Organisasi/Fasyankes induk Anda di SATUSEHAT
                     ],
                     'category' => [
                         [
@@ -111,7 +111,7 @@
                     'id' => '{id}', // WAJIB ada di dalam body PUT dan nilainya harus sama dengan {id} di URL
                     'active' => true,
                     'providedBy' => [
-                        'reference' => 'Organization/10000004'
+                        'reference' => 'Organization/{org_id}'
                     ],
                     'category' => [
                         [

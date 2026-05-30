@@ -29,7 +29,7 @@
                         'display' => 'ambulatory'
                     ],
                     'subject' => [
-                        'reference' => 'Patient/100000000001', // ID Pasien riil dari SATUSEHAT
+                        'reference' => 'Patient/{patient_id}', // ID Pasien riil dari SATUSEHAT
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'participant' => [
@@ -72,7 +72,7 @@
                         ]
                     ],
                     'serviceProvider' => [
-                        'reference' => 'Organization/10000004' // ID Organisasi/Faskes (Kode RS/Klinik di SATUSEHAT)
+                        'reference' => 'Organization/{org_id}' // ID Organisasi/Faskes (Kode RS/Klinik di SATUSEHAT)
                     ]
                 ]
             ],
@@ -104,7 +104,7 @@
                         'display' => 'ambulatory'
                     ],
                     'subject' => [
-                        'reference' => 'Patient/100000000001',
+                        'reference' => 'Patient/{patient_id}',
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'participant' => [
@@ -163,7 +163,7 @@
                         ]
                     ],
                     'serviceProvider' => [
-                        'reference' => 'Organization/10000004'
+                        'reference' => 'Organization/{org_id}'
                     ]
                 ]
             ],

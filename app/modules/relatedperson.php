@@ -58,7 +58,7 @@
                         ]
                     ],
                     'patient' => [
-                        'reference' => 'Patient/100000000001', // Ganti dengan ID Pasien Utama SATUSEHAT
+                        'reference' => 'Patient/{patient_id}', // Ganti dengan ID Pasien Utama SATUSEHAT
                         'display' => 'Nama Pasien Utama'
                     ],
                     'relationship' => [
@@ -131,7 +131,7 @@
                         ]
                     ],
                     'patient' => [
-                        'reference' => 'Patient/100000000001',
+                        'reference' => 'Patient/{patient_id}',
                         'display' => 'Nama Pasien Utama'
                     ],
                     'relationship' => [

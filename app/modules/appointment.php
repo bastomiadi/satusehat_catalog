@@ -65,7 +65,7 @@
                     'participant' => [
                         [
                             'actor' => [
-                                'reference' => 'Patient/100000000001', // Referensi pasien yang berobat
+                                'reference' => 'Patient/{patient_id}', // Referensi pasien yang berobat
                                 'display' => 'Nama Pasien Sesuai KTP'
                             ],
                             'status' => 'accepted', // Status partisipasi pasien
@@ -206,7 +206,7 @@
                     'participant' => [
                         [
                             'actor' => [
-                                'reference' => 'Patient/100000000001',
+                                'reference' => 'Patient/{patient_id}',
                                 'display' => 'Nama Pasien Sesuai KTP'
                             ],
                             'status' => 'accepted',

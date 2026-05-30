@@ -63,7 +63,7 @@
                     'questionnaire' => 'https://fhir.kemkes.go.id/Questionnaire/Q0001', // Tautan kuesioner referensi standar Kemenkes
                     'status' => 'completed', // Status dokumen: in-progress | completed | amended | entered-in-error
                     'subject' => [
-                        'reference' => 'Patient/100000000001', // ID Pasien SATUSEHAT
+                        'reference' => 'Patient/{patient_id}', // ID Pasien SATUSEHAT
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
@@ -119,7 +119,7 @@
                     'questionnaire' => 'https://fhir.kemkes.go.id/Questionnaire/Q0001',
                     'status' => 'completed',
                     'subject' => [
-                        'reference' => 'Patient/100000000001',
+                        'reference' => 'Patient/{patient_id}',
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [

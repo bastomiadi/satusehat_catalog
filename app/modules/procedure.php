@@ -203,7 +203,7 @@
                         ]
                     ],
                     'subject' => [
-                        'reference' => 'Patient/100000000001', // ID Pasien riil SATUSEHAT
+                        'reference' => 'Patient/{patient_id}', // ID Pasien riil SATUSEHAT
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [
@@ -281,7 +281,7 @@
                         ]
                     ],
                     'subject' => [
-                        'reference' => 'Patient/100000000001',
+                        'reference' => 'Patient/{patient_id}',
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'encounter' => [

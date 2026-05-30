@@ -67,7 +67,7 @@
                     'resourceType' => 'ServiceRequest',
                     'identifier' => [
                         [
-                            'system' => 'http://sys-ids.kemkes.go.id/servicerequest/10000004', // Menggunakan Kode Fasyankes Anda (Org ID)
+                            'system' => 'http://sys-ids.kemkes.go.id/servicerequest/{org_id}', // Menggunakan Kode Fasyankes Anda (Org ID)
                             'value' => 'LAB-20260529-001' // Nomor order/permintaan internal dari SIMRS Anda
                         ]
                     ],

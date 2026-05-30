@@ -53,7 +53,7 @@
                         'display' => 'Nama Dokter Spesialis'
                     ],
                     'organization' => [
-                        'reference' => 'Organization/10000004', // ID Organisasi/Fasyankes Anda
+                        'reference' => 'Organization/{org_id)', // ID Organisasi/Fasyankes Anda
                         'display' => 'Nama Rumah Sakit / Klinik Lokal'
                     ],
                     'code' => [

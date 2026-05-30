@@ -70,7 +70,7 @@
                     'identifier' => [
                         [
                             'use' => 'official',
-                            'system' => 'http://sys-ids.kemkes.go.id/organization/100028344', // Ganti dengan ID Organisasi Utama/Fasyankes Anda
+                            'system' => 'http://sys-ids.kemkes.go.id/organization/{org_id}', // Ganti dengan ID Organisasi Utama/Fasyankes Anda
                             'value' => 'POLI-ANAK' // Kode unik internal dari SIMRS Anda untuk unit ini
                         ]
                     ],
@@ -94,7 +94,7 @@
                         ]
                     ],
                     'partOf' => [
-                        'reference' => 'Organization/100028344' // WAJIB: Isi dengan ID Organisasi Utama Fasyankes Anda di SATUSEHAT
+                        'reference' => 'Organization/{org_id}' // WAJIB: Isi dengan ID Organisasi Utama Fasyankes Anda di SATUSEHAT
                     ]
                 ]
             ],
@@ -158,7 +158,7 @@
                     'identifier' => [
                         [
                             'use' => 'official',
-                            'system' => 'http://sys-ids.kemkes.go.id/organization/100028344', // Ganti dengan ID Fasyankes Utama Anda
+                            'system' => 'http://sys-ids.kemkes.go.id/organization/{org_id}', // Ganti dengan ID Fasyankes Utama Anda
                             'value' => 'POLI-ANAK' // Kode internal SIMRS Anda
                         ]
                     ],
@@ -182,7 +182,7 @@
                         ]
                     ],
                     'partOf' => [
-                        'reference' => 'Organization/100028344' // ID Organisasi Utama/Rumah Sakit Anda
+                        'reference' => 'Organization/{org_id}' // ID Organisasi Utama/Rumah Sakit Anda
                     ]
                 ]
             ],

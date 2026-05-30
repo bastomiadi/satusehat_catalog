@@ -95,7 +95,7 @@
                     ],
                     'identifier' => [
                         [
-                            'system' => 'http://sys-ids.kemkes.go.id/medication/10000004', // Menggunakan Kode Fasyankes (Org ID) Anda
+                            'system' => 'http://sys-ids.kemkes.go.id/medication/{org_id}', // Menggunakan Kode Fasyankes (Org ID) Anda
                             'value' => 'OBAT-AMOX-500' // Kode internal item obat dari SIMRS / Inventory Apotek Anda
                         ]
                     ],

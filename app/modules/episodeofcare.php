@@ -60,11 +60,11 @@
                         ]
                     ],
                     'patient' => [
-                        'reference' => 'Patient/100000000001', // ID Pasien riil SATUSEHAT
+                        'reference' => 'Patient/{patient_id}', // ID Pasien riil SATUSEHAT
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'managingOrganization' => [
-                        'reference' => 'Organization/10000004' // ID Organisasi/Fasyankes penanggung jawab program asuhan
+                        'reference' => 'Organization/{org_id}' // ID Organisasi/Fasyankes penanggung jawab program asuhan
                     ],
                     'period' => [
                         'start' => '2026-05-29T08:00:00+07:00' // Rentang waktu asuhan keperawatan dimulai
@@ -177,11 +177,11 @@
                         ]
                     ],
                     'patient' => [
-                        'reference' => 'Patient/100000000001',
+                        'reference' => 'Patient/{patient_id}',
                         'display' => 'Nama Pasien Sesuai KTP'
                     ],
                     'managingOrganization' => [
-                        'reference' => 'Organization/10000004'
+                        'reference' => 'Organization/{org_id}',
                     ],
                     'period' => [
                         'start' => '2026-05-29T08:00:00+07:00',
